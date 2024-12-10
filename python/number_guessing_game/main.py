@@ -51,7 +51,7 @@ def reset_game():
     hint.set(f"Guess a number between 1 to {max_num}")
     guess.set(0)
 
-# UII Components
+# UI Components
 tk.Label(win, text='The Number Guessing Game',font=("Courier", 25)).place(relx=0.5, rely=0.09, anchor=tk.CENTER)
 tk.Entry(win, textvariable=guess, width=3,font=('Ubuntu', 50), relief=tk.GROOVE, justify=tk.CENTER).place(relx=0.5, rely=0.3, anchor=tk.CENTER)
 tk.Button(win, width=8, text='CHECK', font=('Courier', 25), command=check_guess, relief=tk.GROOVE,bg='light blue').place(relx=0.5, rely=0.5, anchor=tk.CENTER)
