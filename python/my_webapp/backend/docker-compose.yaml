@@ -1,0 +1,25 @@
+services:
+  api:
+    build: .
+    container_name: fastapi_app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://postgres:Delor3an@db:5432/taskdb
+
+  db:
+    image: postgres:latest
+    container_name: postgres_db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Delor3an
+      POSTGRES_DB: taskdb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
