@@ -654,7 +654,7 @@ def get_all_tasks(
 
 Add `from sqlalchemy import asc`
 
-Update main GET route.
+Update primary GET route.
 
 ```python
 @router.get("/tasks/")

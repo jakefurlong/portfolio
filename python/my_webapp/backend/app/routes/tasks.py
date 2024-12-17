@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from app.db.session import SessionLocal
 from app.db.models import Task as TaskModel
 from app.schemas.task import Task as TaskSchema
+from sqlalchemy import asc
 
 router = APIRouter()
 
