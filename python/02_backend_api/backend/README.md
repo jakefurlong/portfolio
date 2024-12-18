@@ -455,7 +455,7 @@ services:
     environment:
       POSTGRES_DB: taskdb
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: Delor3an
+      POSTGRES_PASSWORD: strongpassword
     ports:
       - "5432:5432"
     volumes:
@@ -724,7 +724,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 # Read the DATABASE_URL from environment variables
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:Delor3an@db:5432/taskdb")
+DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:strongpassword@db:5432/taskdb")
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
@@ -745,7 +745,7 @@ services:
     depends_on:
       - db
     environment:
-      - DATABASE_URL=postgresql://postgres:Delor3an@db:5432/taskdb
+      - DATABASE_URL=postgresql://postgres:strongpassword@db:5432/taskdb
 
   db:
     image: postgres:latest
@@ -754,7 +754,7 @@ services:
       - "5432:5432"
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: Delor3an
+      POSTGRES_PASSWORD: strongpassword
       POSTGRES_DB: taskdb
     volumes:
       - postgres_data:/var/lib/postgresql/data
