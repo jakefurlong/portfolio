@@ -20,37 +20,21 @@ for line in lines:
 
 # PROCESS REPORT FOR SCORING
 
-def solution(report):
-    score = 0
-    print("Processing report...", report)
-    if len(set(report)) == len(report):
-        score += 1
-        print("Safe (no duplicates):", report)
-    if sorted(report) == report:
-        score += 1
-        print("Safe (Integers are ascending):", report)
-    if sorted(report, reverse=True) == report:
-        score += 1
-        print("Safe (Integers are descending):", report)
+def is_valid(report):
+    if len(set(report)) != len(report):
+        return False
+    if sorted(report) != report and list(reversed(sorted(report))) != report:
+        return False
     for i in range(len(report) - 1):
-        if len(report) > 1 and abs(report[0] - report[1]) <= 3:
-            report = report[1:]
-            if len(report) == 1:
-                score += 1
-                print("Safe (Integers are no more than 2 apart):")
-        else:
-            break
-         
-    print("Score:", score)
-    print("\n")
-    return score
+        if abs(report[i] - report[i+1]) > 3:
+            return False
+    return True
 
-########################################################
-
-safe = 0
+score = 0
 
 for report in reports:
-    if solution(report) == 3:
-        safe += 1
+    if is_valid(report):
+        #print("Report:", report, "is valid.")
+        score += 1
 
-print("Safe:", safe)
+print("Score:", score)
